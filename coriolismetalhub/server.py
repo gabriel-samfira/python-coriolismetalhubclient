@@ -48,12 +48,14 @@ class ShowServer(ShowOne):
                    "API Endpoint",
                    "Physical Cores",
                    "Memory",
+                   "Firmware type",
                    "Alive")
         data = (server["id"],
                 server["hostname"],
                 server["api_endpoint"],
                 server["physical_cores"],
                 server["memory"],
+                server["firmware_type"],
                 server["active"])
         return (columns, data)
 
@@ -74,11 +76,13 @@ class CreateServer(ShowOne):
                    "API Endpoint",
                    "Physical Cores",
                    "Memory",
+                   "Firmware type",
                    "Alive")
         data = (server["id"],
                 server["hostname"],
                 server["api_endpoint"],
                 server["physical_cores"],
                 server["memory"],
+                server["firmware_type"],
                 server["active"])
         return (columns, data)
