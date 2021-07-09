@@ -17,6 +17,7 @@ class Servers(Lister):
         ret = [
             ["ID", "Hostname", "API Endpoint", "Alive"]
         ]
+        print(servers)
         items = []
         for server in servers:
             item = [
@@ -42,6 +43,32 @@ class ShowServer(ShowOne):
         cli = client.get_client_from_options(
             self._cmd_options)
         server = cli.get_server(args.id)
+        columns = ('ID',
+                   'Hostname',
+                   "API Endpoint",
+                   "Physical Cores",
+                   "Memory",
+                   "Alive")
+        data = (server["id"],
+                server["hostname"],
+                server["api_endpoint"],
+                server["physical_cores"],
+                server["memory"],
+                server["active"])
+        return (columns, data)
+
+
+class CreateServer(ShowOne):
+
+    def get_parser(self, prog_name):
+        parser = super(CreateServer, self).get_parser(prog_name)
+        parser.add_argument("endpoint", help="The endpoint of the server.")
+        return parser
+    
+    def take_action(self, args):
+        cli = client.get_client_from_options(
+            self._cmd_options)
+        server = cli.add_server(args.endpoint)
         columns = ('ID',
                    'Hostname',
                    "API Endpoint",
