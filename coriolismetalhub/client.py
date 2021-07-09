@@ -66,7 +66,7 @@ class AgentClient(_ClientBase):
         }
         url = urlparse.urljoin(
             self._endpoint, "/api/v1/snapstoremappings/")
-        ret = self._cli.post(url, data=data)
+        ret = self._cli.post(url, json=data)
         ret.raise_for_status()
         return ret.json()
 
@@ -176,7 +176,7 @@ class HubClient(_ClientBase):
         }
         url = urlparse.urljoin(
             self._endpoint, "/api/v1/servers/")
-        ret = self._cli.post(url, data=data)
+        ret = self._cli.post(url, json=data)
         ret.raise_for_status()
         return ret.json()
 

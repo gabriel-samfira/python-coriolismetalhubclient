@@ -17,7 +17,7 @@ class Servers(Lister):
         ret = [
             ["ID", "Hostname", "API Endpoint", "Alive"]
         ]
-        print(servers)
+
         items = []
         for server in servers:
             item = [
