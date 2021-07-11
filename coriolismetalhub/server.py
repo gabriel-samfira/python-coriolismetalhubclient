@@ -43,6 +43,8 @@ class ShowServer(ShowOne):
         cli = client.get_client_from_options(
             self._cmd_options)
         server = cli.get_server(args.id)
+        import json
+        print(json.dumps(server, indent=2))
         columns = ('ID',
                    'Hostname',
                    "API Endpoint",

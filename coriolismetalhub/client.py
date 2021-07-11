@@ -135,7 +135,7 @@ class AgentClient(_ClientBase):
             "Range": "bytes=%s-%s" % (start, end)
         }
         ret = self._cli.get(
-            url, headers=headers)
+            url, headers=headers, stream=stream)
         ret.raise_for_status()
 
         if stream:
